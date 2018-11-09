@@ -23,7 +23,7 @@ class DeckView: UIView {
         roundedRect.addClip()
         self.backgroundColor = Colors.backgroundColor
         if isVisible {
-            if let cardBackImage = UIImage(named: "maryPoppins", in: Bundle(for: classForCoder), compatibleWith: traitCollection) {
+            if let cardBackImage = UIImage(named: "card_bg", in: Bundle(for: classForCoder), compatibleWith: traitCollection) {
                 cardBackImage.draw(in: bounds)
             }
         }
