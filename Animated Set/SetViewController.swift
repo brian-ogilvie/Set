@@ -14,24 +14,24 @@ class SetViewController: UIViewController, UIDynamicAnimatorDelegate {
     
     @IBOutlet weak var cardAreaView: CardAreaView! {
         didSet {
-            let rotationGestureRecognizer = UIRotationGestureRecognizer(
-                target: self, action: #selector(shuffleCards(recognizer:))
-            )
-            cardAreaView.addGestureRecognizer(rotationGestureRecognizer)
+//            let rotationGestureRecognizer = UIRotationGestureRecognizer(
+//                target: self, action: #selector(shuffleCards(recognizer:))
+//            )
+//            cardAreaView.addGestureRecognizer(rotationGestureRecognizer)
         }
     }
     
     @IBOutlet weak var endGameLbl: UILabel!
     
-    @objc func shuffleCards(recognizer: UIRotationGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            print("Rotation gesture ended.")
+//    @objc func shuffleCards(recognizer: UIRotationGestureRecognizer) {
+//        switch recognizer.state {
+//        case .ended:
+//            print("Rotation gesture ended.")
 //            game.shuffleVisibleCards()
-        default:
-            break
-        }
-    }
+//        default:
+//            break
+//        }
+//    }
 
     
     @objc private func deal(recognizer: UITapGestureRecognizer) {
@@ -380,7 +380,6 @@ class SetViewController: UIViewController, UIDynamicAnimatorDelegate {
             create: true
             ).appendingPathComponent("Untitled.json") {
             document = SetGameStateDocument(fileURL: url)
-            addDocumentStateObserver()
             document?.open(completionHandler: { [weak self] (success) in
                 if success {
                     self?.gameState = self?.document?.gameState
@@ -393,18 +392,6 @@ class SetViewController: UIViewController, UIDynamicAnimatorDelegate {
                 }
             })
         }
-    }
-    
-    private var documentObserver: NSObjectProtocol?
-    
-    private func addDocumentStateObserver() {
-        documentObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIDocumentStateChanged,
-            object: document,
-            queue: OperationQueue.main,
-            using: { (notification) in
-            print("Document state changed to \(self.document!.documentState)")
-        })
     }
     
     private func updateDocument() {

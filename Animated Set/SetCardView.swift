@@ -38,7 +38,6 @@ class SetCardView: UIView {
         case "purple":
             return #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         default:
-            print("color \"\(color)\" is not a valid value.")
             return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
@@ -99,7 +98,6 @@ class SetCardView: UIView {
         case "squiggle":
             return drawSquiggle(centerY: yOffset)
         default:
-            print("shape \"\(shape)\" is not a valid value.")
             return ()
         }
     }
@@ -108,13 +106,13 @@ class SetCardView: UIView {
     private func drawAndPlace() {
         if isFaceUp {
             switch number {
-            case 1: chooseShape(yOffset: bounds.midY)
-            case 2: chooseShape(yOffset: bounds.midY - yOffsetFor2)
-            chooseShape(yOffset: bounds.midY + yOffsetFor2)
-            case 3: chooseShape(yOffset: bounds.midY - yOffsetFor3)
-            chooseShape(yOffset: bounds.midY)
-            chooseShape(yOffset: bounds.midY + yOffsetFor3)
-            default: print("number \"\(number)\" is an invalid value.")
+                case 1: chooseShape(yOffset: bounds.midY)
+                case 2: chooseShape(yOffset: bounds.midY - yOffsetFor2)
+                chooseShape(yOffset: bounds.midY + yOffsetFor2)
+                case 3: chooseShape(yOffset: bounds.midY - yOffsetFor3)
+                chooseShape(yOffset: bounds.midY)
+                chooseShape(yOffset: bounds.midY + yOffsetFor3)
+                default: return // invalid shape value
             }
             UIColor.init(cgColor: shapeColor).set()
             shapePath.lineWidth = outlineWidth
@@ -130,7 +128,8 @@ class SetCardView: UIView {
                 //do nothing
             }
             else {
-                print("fill \"\(fill)\" is not a valid value.")
+                //invalid fill value
+                return
             }
         } else {
             if let cardBackImage = UIImage(named: "card_bg", in: Bundle(for: classForCoder), compatibleWith: traitCollection) {
