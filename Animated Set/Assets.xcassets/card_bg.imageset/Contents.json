@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "astros_logo.jpg",
+      "filename" : "card_bg.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "astros_logo_2x.jpg",
       "scale" : "2x"
     },
     {

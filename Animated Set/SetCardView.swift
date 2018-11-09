@@ -133,7 +133,7 @@ class SetCardView: UIView {
                 print("fill \"\(fill)\" is not a valid value.")
             }
         } else {
-            if let cardBackImage = UIImage(named: "maryPoppins", in: Bundle(for: classForCoder), compatibleWith: traitCollection) {
+            if let cardBackImage = UIImage(named: "card_bg", in: Bundle(for: classForCoder), compatibleWith: traitCollection) {
                 cardBackImage.draw(in: bounds)
             }
         }
